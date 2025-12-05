@@ -6,21 +6,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Source files
 set(SOURCES
-    src/Map.cpp
-    src/Unit.cpp
-    src/Logic.cpp
-    src/SimulationEngine.cpp
-    src/API.cpp
+    src/BattleEngine.cpp
 )
 
 # Header files
 set(HEADERS
-    include/Types.hpp
-    include/Map.hpp
-    include/Unit.hpp
-    include/Logic.hpp
-    include/SimulationEngine.hpp
-    include/API.hpp
+    include/BattleEngine.h
 )
 
 # Include directories
@@ -29,10 +20,15 @@ include_directories(include)
 # Check if building for WebAssembly
 if(EMSCRIPTEN)
     # WebAssembly build
-    add_executable(battle_sim ${SOURCES} ${HEADERS})
+    add_executable(battle_sim 
+        ${SOURCES} 
+        ${HEADERS}
+        src/wasm_bindings.cpp
+    )
     
     set_target_properties(battle_sim PROPERTIES
-        LINK_FLAGS "-s WASM=1 -s EXPORTED_RUNTIME_METHODS='[\"cwrap\",\"ccall\"]' -s MODULARIZE=1 -s EXPORT_NAME='BattleSimulator' --no-entry"
+        COMPILE_FLAGS "-O3 -s WASM=1"
+        LINK_FLAGS "-O3 -s WASM=1 -s MODULARIZE=1 -s EXPORT_NAME='createBattleSimulator' -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap'] --bind -s ALLOW_MEMORY_GROWTH=1"
     )
     
     # Output to wasm-build directory
@@ -40,6 +36,14 @@ if(EMSCRIPTEN)
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/wasm-build"
     )
 else()
-    # Native build
-    add_executable(battle_sim ${SOURCES} ${HEADERS})
+    # Native build for testing
+    add_executable(battle_sim_test 
+        ${SOURCES} 
+        ${HEADERS}
+        tests/test_main.cpp
+    )
+    
+    # Enable testing
+    enable_testing()
+    add_test(NAME BattleSimulatorTests COMMAND battle_sim_test)
 endif()

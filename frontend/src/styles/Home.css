@@ -14,8 +14,14 @@
 }
 
 .home-header {
-  text-align: center;
   margin-bottom: 4rem;
+}
+
+.home-header .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
 .home-header h1 {
@@ -30,6 +36,25 @@
   font-size: 1.25rem;
   color: #94a3b8;
   margin: 0;
+}
+
+.login-btn {
+  padding: 0.75rem 1.5rem;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.login-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .mode-selection {

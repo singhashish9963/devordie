@@ -1,19 +1,24 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import { connectDB } from './config/database.js'
+import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser'
 import simulationRoutes from './routes/simulation.js'
 import configRoutes from './routes/config.js'
 import battleRoutes from './routes/battle.js'
-import authRoutes from './routes/authRoutes.js'
-import configurationRoutes from './routes/configRoutes.js'
+import authRoutes from './routes/auth.js'
+import configurationRoutes from './routes/configs.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import { requestLogger } from './middlewares/logger.js'
 
 dotenv.config()
 
-// Connect to MongoDB
-connectDB()
+// MongoDB Connection
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/devordie'
+
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log('📦 MongoDB connected successfully'))
+  .catch(err => console.error('❌ MongoDB connection error:', err))
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -40,6 +45,7 @@ app.use(cors({
   },
   credentials: true
 }))
+app.use(cookieParser())
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 app.use(requestLogger)
@@ -49,11 +55,14 @@ app.get('/health', (req, res) => {
   res.json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
-    service: 'Battle Simulator API'
+    service: 'Battle Simulator API',
+    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
   })
 })
 
 // API Routes
+app.use('/api/auth', authRoutes)
+app.use('/api/configurations', configurationRoutes)
 app.use('/api/simulations', simulationRoutes)
 app.use('/api/configs', configRoutes)
 app.use('/api/battles', battleRoutes)

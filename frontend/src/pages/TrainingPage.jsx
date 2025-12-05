@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import TerrainEditor from '../components/TerrainEditor'
 import UnitSidebar from '../components/UnitSidebar'
 import CodeEditorPanel from '../components/CodeEditorPanel'
 import SimulationControls from '../components/SimulationControls'
+import ConfigManager from '../components/ConfigManager'
+import UserMenu from '../components/UserMenu'
 import '../styles/TrainingPage.css'
 
 const TrainingPage = () => {
   const navigate = useNavigate()
+  const [showConfigManager, setShowConfigManager] = useState(false)
 
   return (
     <div className="training-page">
@@ -17,8 +20,10 @@ const TrainingPage = () => {
         </button>
         <h1>Training Mode</h1>
         <div className="header-actions">
-          <button className="save-btn">💾 Save Configuration</button>
-          <button className="load-btn">📂 Load Configuration</button>
+          <button className="save-load-btn" onClick={() => setShowConfigManager(true)}>
+            💾 Save / Load
+          </button>
+          <UserMenu />
         </div>
       </header>
 
@@ -43,6 +48,10 @@ const TrainingPage = () => {
           </div>
         </div>
       </div>
+
+      {showConfigManager && (
+        <ConfigManager onClose={() => setShowConfigManager(false)} />
+      )}
     </div>
   )
 }

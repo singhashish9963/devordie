@@ -91,6 +91,17 @@ export const SimulationProvider = ({ children }) => {
     }))
   }
 
+  // Set both team codes at once (for loading configurations)
+  const setCodeEditors = (codeObject) => {
+    setEditorState(prev => ({
+      ...prev,
+      code: {
+        teamA: codeObject.teamA || prev.code.teamA,
+        teamB: codeObject.teamB || prev.code.teamB
+      }
+    }))
+  }
+
   // Reset editor to initial state
   const resetEditor = () => {
     setEditorState({
@@ -120,12 +131,14 @@ export const SimulationProvider = ({ children }) => {
   const value = {
     editorState,
     simulationState,
+    setEditorState,
     setSimulationState,
     updateTerrain,
     addUnit,
     removeUnit,
     updateUnit,
     updateCode,
+    setCodeEditors,
     resetEditor
   }
 

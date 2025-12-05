@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import UserMenu from '../components/UserMenu'
 import '../styles/Home.css'
 
 const Home = () => {
@@ -9,8 +10,13 @@ const Home = () => {
     <div className="home-page">
       <div className="home-container">
         <header className="home-header">
-          <h1>DevOrDie</h1>
-          <p className="tagline">Battle Simulator - Code Your Army, Dominate the Battlefield</p>
+          <div className="header-content">
+            <div>
+              <h1>DevOrDie</h1>
+              <p className="tagline">Battle Simulator - Code Your Army, Dominate the Battlefield</p>
+            </div>
+            <UserMenu />
+          </div>
         </header>
 
         <div className="mode-selection">
