@@ -1,0 +1,104 @@
+/* War Page Styles */
+.war-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7f1d1d 0%, #1e293b 50%, #0f172a 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.war-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.coming-soon {
+  max-width: 600px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 2px solid rgba(239, 68, 68, 0.3);
+  border-radius: 1rem;
+  padding: 3rem;
+  text-align: center;
+}
+
+.war-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.coming-soon h2 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.coming-soon > p {
+  color: #94a3b8;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+.planned-features {
+  text-align: left;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 0.5rem;
+}
+
+.planned-features h3 {
+  color: #ef4444;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.planned-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.planned-features li {
+  color: #cbd5e1;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.notify-btn, .back-training-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.notify-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.notify-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+}
+
+.back-training-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+.back-training-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+}
