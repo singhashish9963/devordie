@@ -1,18 +1,160 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "tailwindcss";
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  :root {
+    /* Enhanced color scheme with richer gradients and glow effects */
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+    --card: 222 45% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 188 95% 58%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 28 92% 62%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 217 19% 27%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 188 85% 55%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 19% 22%;
+    --input: 217 19% 15%;
+    --ring: 188 85% 55%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Enhanced gradient background with animated glow */
+    background: radial-gradient(ellipse at top, hsl(230 40% 12%) 0%, hsl(222 47% 8%) 50%),
+      linear-gradient(135deg, hsl(222 47% 8%) 0%, hsl(230 40% 6%) 100%);
+    min-height: 100vh;
+    animation: bg-shift 20s ease infinite;
+  }
+
+  @keyframes bg-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Enhanced glow effects with animation */
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.4), 0 0 60px rgba(34, 211, 238, 0.15);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 30px rgba(34, 211, 238, 0.4), 0 0 60px rgba(34, 211, 238, 0.15);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(34, 211, 238, 0.6), 0 0 80px rgba(34, 211, 238, 0.25);
+    }
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 30px rgba(251, 146, 60, 0.4), 0 0 60px rgba(251, 146, 60, 0.15);
+  }
+
+  /* Enhanced grid overlay with animation */
+  .grid-overlay {
+    background-image: linear-gradient(rgba(34, 211, 238, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 211, 238, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: grid-flow 20s linear infinite;
+  }
+
+  @keyframes grid-flow {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 30px 30px;
+    }
+  }
+
+  /* Added shimmer effect for interactive elements */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.2), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  /* Added tactical HUD elements */
+  .tactical-border {
+    position: relative;
+    border: 1px solid hsl(188 95% 58% / 0.3);
+  }
+
+  .tactical-border::before,
+  .tactical-border::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid hsl(188 95% 58%);
+  }
+
+  .tactical-border::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .tactical-border::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button,
+  input,
+  select {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
 }
