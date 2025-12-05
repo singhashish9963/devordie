@@ -36,7 +36,7 @@ cd ..
 
 echo "✅ Battle Simulator is running!"
 echo "📱 Frontend: http://localhost:3000"
-echo "🔌 Backend: http://localhost:5000"
+echo "🔌 Backend: http://localhost:5001"
 echo "Press Ctrl+C to stop"
 
 # Wait for user to stop

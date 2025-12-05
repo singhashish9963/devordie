@@ -1,0 +1,1342 @@
+[{
+  "_id": {
+    "$oid": "69331b46f3bf944a5e095b81"
+  },
+  "userId": {
+    "$oid": "69331b30f3bf944a5e095b7a"
+  },
+  "name": "wolf stategy",
+  "description": "",
+  "config": {
+    "terrain": [
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ]
+    ],
+    "units": {
+      "teamA": [
+        {
+          "type": "soldier",
+          "position": {
+            "x": 2,
+            "y": 5
+          },
+          "health": 100,
+          "attack": 15,
+          "defense": 10,
+          "speed": 3,
+          "range": 1,
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b82"
+          }
+        },
+        {
+          "type": "tank",
+          "position": {
+            "x": 2,
+            "y": 7
+          },
+          "health": 150,
+          "attack": 25,
+          "defense": 20,
+          "speed": 2,
+          "range": 2,
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b83"
+          }
+        },
+        {
+          "type": "tank",
+          "position": {
+            "x": 2,
+            "y": 9
+          },
+          "health": 150,
+          "attack": 25,
+          "defense": 20,
+          "speed": 2,
+          "range": 2,
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b84"
+          }
+        },
+        {
+          "type": "drone",
+          "position": {
+            "x": 2,
+            "y": 11
+          },
+          "health": 50,
+          "attack": 12,
+          "defense": 2,
+          "speed": 5,
+          "range": 4,
+          "special": {
+            "ignoresTerrain": true,
+            "visionRange": 6
+          },
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b85"
+          }
+        },
+        {
+          "type": "drone",
+          "position": {
+            "x": 2,
+            "y": 13
+          },
+          "health": 50,
+          "attack": 12,
+          "defense": 2,
+          "speed": 5,
+          "range": 4,
+          "special": {
+            "ignoresTerrain": true,
+            "visionRange": 6
+          },
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b86"
+          }
+        },
+        {
+          "type": "drone",
+          "position": {
+            "x": 2,
+            "y": 5
+          },
+          "health": 50,
+          "attack": 12,
+          "defense": 2,
+          "speed": 5,
+          "range": 4,
+          "special": {
+            "ignoresTerrain": true,
+            "visionRange": 6
+          },
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b87"
+          }
+        }
+      ],
+      "teamB": [
+        {
+          "type": "archer",
+          "position": {
+            "x": 17,
+            "y": 5
+          },
+          "health": 80,
+          "attack": 20,
+          "defense": 5,
+          "speed": 2,
+          "range": 3,
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b88"
+          }
+        },
+        {
+          "type": "archer",
+          "position": {
+            "x": 17,
+            "y": 7
+          },
+          "health": 80,
+          "attack": 20,
+          "defense": 5,
+          "speed": 2,
+          "range": 3,
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b89"
+          }
+        },
+        {
+          "type": "drone",
+          "position": {
+            "x": 17,
+            "y": 9
+          },
+          "health": 50,
+          "attack": 12,
+          "defense": 2,
+          "speed": 5,
+          "range": 4,
+          "special": {
+            "ignoresTerrain": true,
+            "visionRange": 6
+          },
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b8a"
+          }
+        },
+        {
+          "type": "drone",
+          "position": {
+            "x": 17,
+            "y": 11
+          },
+          "health": 50,
+          "attack": 12,
+          "defense": 2,
+          "speed": 5,
+          "range": 4,
+          "special": {
+            "ignoresTerrain": true,
+            "visionRange": 6
+          },
+          "_id": {
+            "$oid": "69331b46f3bf944a5e095b8b"
+          }
+        }
+      ]
+    },
+    "code": {
+      "teamA": "// Team A Strategy\n// Your AI logic here\n// Access: state.self, state.enemies, state.allies, state.terrain\n\n// Find closest enemy\nif (state.enemies.length === 0) {\n  return { action: 'idle' };\n}\n\nconst closestEnemy = state.enemies.reduce((closest, enemy) => {\n  const distCurrent = Math.sqrt(\n    Math.pow(enemy.position.x - state.self.position.x, 2) + \n    Math.pow(enemy.position.y - state.self.position.y, 2)\n  );\n  const distClosest = closest ? Math.sqrt(\n    Math.pow(closest.position.x - state.self.position.x, 2) + \n    Math.pow(closest.position.y - state.self.position.y, 2)\n  ) : Infinity;\n  return distCurrent < distClosest ? enemy : closest;\n}, null);\n\nconst distance = Math.sqrt(\n  Math.pow(closestEnemy.position.x - state.self.position.x, 2) + \n  Math.pow(closestEnemy.position.y - state.self.position.y, 2)\n);\n\n// Attack if in range\nif (distance <= state.self.range) {\n  return {\n    action: 'attack',\n    targetId: closestEnemy.id\n  };\n}\n\n// Move towards enemy\nreturn {\n  action: 'move',\n  target: closestEnemy.position\n};",
+      "teamB": "// Team B Strategy\n// Your AI logic here\n// Access: state.self, state.enemies, state.allies, state.terrain\n\n// Find closest enemy\nif (state.enemies.length === 0) {\n  return { action: 'idle' };\n}\n\nconst closestEnemy = state.enemies.reduce((closest, enemy) => {\n  const distCurrent = Math.sqrt(\n    Math.pow(enemy.position.x - state.self.position.x, 2) + \n    Math.pow(enemy.position.y - state.self.position.y, 2)\n  );\n  const distClosest = closest ? Math.sqrt(\n    Math.pow(closest.position.x - state.self.position.x, 2) + \n    Math.pow(closest.position.y - state.self.position.y, 2)\n  ) : Infinity;\n  return distCurrent < distClosest ? enemy : closest;\n}, null);\n\nconst distance = Math.sqrt(\n  Math.pow(closestEnemy.position.x - state.self.position.x, 2) + \n  Math.pow(closestEnemy.position.y - state.self.position.y, 2)\n);\n\n// Attack if in range\nif (distance <= state.self.range) {\n  return {\n    action: 'attack',\n    targetId: closestEnemy.id\n  };\n}\n\n// Move towards enemy\nreturn {\n  action: 'move',\n  target: closestEnemy.position\n};"
+    },
+    "gridSize": {
+      "width": 20,
+      "height": 20
+    }
+  },
+  "isPublic": false,
+  "tags": [],
+  "stats": {
+    "timesUsed": 0,
+    "wins": 0,
+    "losses": 0,
+    "draws": 0
+  },
+  "createdAt": {
+    "$date": "2025-12-05T17:49:58.483Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-05T17:49:58.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "693344b2b85fe24ee17a99a3"
+  },
+  "userId": {
+    "$oid": "69333eefb85fe24ee17a9990"
+  },
+  "name": "ml_data1_strategy",
+  "description": "",
+  "config": {
+    "terrain": [
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ],
+      [
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground",
+        "ground"
+      ]
+    ],
+    "units": {
+      "teamA": [
+        {
+          "type": "soldier",
+          "position": {
+            "x": 2,
+            "y": 5
+          },
+          "health": 100,
+          "attack": 15,
+          "defense": 10,
+          "speed": 3,
+          "range": 1,
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99a4"
+          }
+        },
+        {
+          "type": "archer",
+          "position": {
+            "x": 2,
+            "y": 7
+          },
+          "health": 80,
+          "attack": 20,
+          "defense": 5,
+          "speed": 2,
+          "range": 3,
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99a5"
+          }
+        },
+        {
+          "type": "tank",
+          "position": {
+            "x": 2,
+            "y": 9
+          },
+          "health": 150,
+          "attack": 25,
+          "defense": 20,
+          "speed": 2,
+          "range": 2,
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99a6"
+          }
+        },
+        {
+          "type": "drone",
+          "position": {
+            "x": 2,
+            "y": 11
+          },
+          "health": 50,
+          "attack": 12,
+          "defense": 2,
+          "speed": 5,
+          "range": 4,
+          "special": {
+            "ignoresTerrain": true,
+            "visionRange": 6
+          },
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99a7"
+          }
+        },
+        {
+          "type": "sniper",
+          "position": {
+            "x": 2,
+            "y": 13
+          },
+          "health": 60,
+          "attack": 35,
+          "defense": 3,
+          "speed": 2,
+          "range": 5,
+          "special": {
+            "criticalChance": 0.3,
+            "attackCooldown": 5
+          },
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99a8"
+          }
+        },
+        {
+          "type": "medic",
+          "position": {
+            "x": 2,
+            "y": 5
+          },
+          "health": 70,
+          "attack": 5,
+          "defense": 8,
+          "speed": 3,
+          "range": 1,
+          "special": {
+            "healAmount": 15,
+            "healRange": 2,
+            "healCooldown": 3
+          },
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99a9"
+          }
+        }
+      ],
+      "teamB": [
+        {
+          "type": "soldier",
+          "position": {
+            "x": 17,
+            "y": 5
+          },
+          "health": 100,
+          "attack": 15,
+          "defense": 10,
+          "speed": 3,
+          "range": 1,
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99aa"
+          }
+        },
+        {
+          "type": "archer",
+          "position": {
+            "x": 17,
+            "y": 7
+          },
+          "health": 80,
+          "attack": 20,
+          "defense": 5,
+          "speed": 2,
+          "range": 3,
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99ab"
+          }
+        },
+        {
+          "type": "tank",
+          "position": {
+            "x": 17,
+            "y": 9
+          },
+          "health": 150,
+          "attack": 25,
+          "defense": 20,
+          "speed": 2,
+          "range": 2,
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99ac"
+          }
+        },
+        {
+          "type": "drone",
+          "position": {
+            "x": 17,
+            "y": 11
+          },
+          "health": 50,
+          "attack": 12,
+          "defense": 2,
+          "speed": 5,
+          "range": 4,
+          "special": {
+            "ignoresTerrain": true,
+            "visionRange": 6
+          },
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99ad"
+          }
+        },
+        {
+          "type": "sniper",
+          "position": {
+            "x": 17,
+            "y": 13
+          },
+          "health": 60,
+          "attack": 35,
+          "defense": 3,
+          "speed": 2,
+          "range": 5,
+          "special": {
+            "criticalChance": 0.3,
+            "attackCooldown": 5
+          },
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99ae"
+          }
+        },
+        {
+          "type": "medic",
+          "position": {
+            "x": 17,
+            "y": 5
+          },
+          "health": 70,
+          "attack": 5,
+          "defense": 8,
+          "speed": 3,
+          "range": 1,
+          "special": {
+            "healAmount": 15,
+            "healRange": 2,
+            "healCooldown": 3
+          },
+          "_id": {
+            "$oid": "693344b2b85fe24ee17a99af"
+          }
+        }
+      ]
+    },
+    "code": {
+      "teamA": "// Team A Strategy\n// Your AI logic here\n// Access: state.self, state.enemies, state.allies, state.terrain\n\n// Find closest enemy\nif (state.enemies.length === 0) {\n  return { action: 'idle' };\n}\n\nconst closestEnemy = state.enemies.reduce((closest, enemy) => {\n  const distCurrent = Math.sqrt(\n    Math.pow(enemy.position.x - state.self.position.x, 2) + \n    Math.pow(enemy.position.y - state.self.position.y, 2)\n  );\n  const distClosest = closest ? Math.sqrt(\n    Math.pow(closest.position.x - state.self.position.x, 2) + \n    Math.pow(closest.position.y - state.self.position.y, 2)\n  ) : Infinity;\n  return distCurrent < distClosest ? enemy : closest;\n}, null);\n\nconst distance = Math.sqrt(\n  Math.pow(closestEnemy.position.x - state.self.position.x, 2) + \n  Math.pow(closestEnemy.position.y - state.self.position.y, 2)\n);\n\n// Attack if in range\nif (distance <= state.self.range) {\n  return {\n    action: 'attack',\n    targetId: closestEnemy.id\n  };\n}\n\n// Move towards enemy\nreturn {\n  action: 'move',\n  target: closestEnemy.position\n};",
+      "teamB": "// Team B Strategy\n// Your AI logic here\n// Access: state.self, state.enemies, state.allies, state.terrain\n\n// Find closest enemy\nif (state.enemies.length === 0) {\n  return { action: 'idle' };\n}\n\nconst closestEnemy = state.enemies.reduce((closest, enemy) => {\n  const distCurrent = Math.sqrt(\n    Math.pow(enemy.position.x - state.self.position.x, 2) + \n    Math.pow(enemy.position.y - state.self.position.y, 2)\n  );\n  const distClosest = closest ? Math.sqrt(\n    Math.pow(closest.position.x - state.self.position.x, 2) + \n    Math.pow(closest.position.y - state.self.position.y, 2)\n  ) : Infinity;\n  return distCurrent < distClosest ? enemy : closest;\n}, null);\n\nconst distance = Math.sqrt(\n  Math.pow(closestEnemy.position.x - state.self.position.x, 2) + \n  Math.pow(closestEnemy.position.y - state.self.position.y, 2)\n);\n\n// Attack if in range\nif (distance <= state.self.range) {\n  return {\n    action: 'attack',\n    targetId: closestEnemy.id\n  };\n}\n\n// Move towards enemy\nreturn {\n  action: 'move',\n  target: closestEnemy.position\n};"
+    },
+    "gridSize": {
+      "width": 20,
+      "height": 20
+    }
+  },
+  "isPublic": false,
+  "tags": [],
+  "stats": {
+    "timesUsed": 0,
+    "wins": 0,
+    "losses": 0,
+    "draws": 0
+  },
+  "createdAt": {
+    "$date": "2025-12-05T20:46:42.192Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-05T20:46:42.192Z"
+  },
+  "__v": 0
+}]

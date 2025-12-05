@@ -55,7 +55,7 @@ cp .env.example .env
 Edit `.env` with your settings:
 
 ```env
-PORT=5000
+PORT=5001
 NODE_ENV=development
 FRONTEND_URL=http://localhost:5173
 ```
@@ -68,7 +68,7 @@ FRONTEND_URL=http://localhost:5173
 npm run dev
 ```
 
-Server runs on http://localhost:5000 with auto-reload.
+Server runs on http://localhost:5001 with auto-reload.
 
 ### Production Mode
 
@@ -297,7 +297,7 @@ Frontend should connect to backend API:
 
 ```javascript
 // frontend/src/api/simulation.js
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://localhost:5001/api';
 
 export async function createSimulation(config) {
   const response = await fetch(`${API_URL}/simulations`, {
@@ -322,7 +322,7 @@ NODE_ENV=production npm start
 
 ```bash
 docker build -t battle-simulator-backend .
-docker run -p 5000:5000 battle-simulator-backend
+docker run -p 5001:5001 battle-simulator-backend
 ```
 
 ## License

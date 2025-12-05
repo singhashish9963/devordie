@@ -7,7 +7,7 @@
    - Full HTTP client for backend communication
    - Methods: create, start, step, getState, delete, validate, getAll
    - Health check for connection monitoring
-   - API Base URL: `http://localhost:5000/api`
+   - API Base URL: `http://localhost:5001/api`
 
 2. **useSimulation Hook Updated** (`frontend/src/hooks/useSimulation.js`)
    - Replaced MockSimulationEngine with real backend API calls
@@ -34,7 +34,7 @@
 cd backend
 npm start
 ```
-Expected: Server running on `http://localhost:5000`
+Expected: Server running on `http://localhost:5001`
 
 **Frontend** (Terminal 2):
 ```bash
@@ -124,8 +124,8 @@ Expected: Server running on `http://localhost:3004`
 ### ❌ Common Issues
 
 **Backend Status Shows "Offline"**
-- Solution: Ensure backend server is running on port 5000
-- Check: `curl http://localhost:5000/health`
+- Solution: Ensure backend server is running on port 5001
+- Check: `curl http://localhost:5001/health`
 
 **Buttons Disabled**
 - Solution: Backend must be connected (green status)
