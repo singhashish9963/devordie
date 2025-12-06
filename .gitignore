@@ -72,4 +72,3 @@ deploy/
 #Virtual Environments
 venv/
 __pycache__/
-*.pyc
