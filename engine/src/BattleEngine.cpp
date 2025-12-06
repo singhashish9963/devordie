@@ -27,18 +27,6 @@ Unit::Unit(const std::string& id, const std::string& team, const std::string& ty
       health(100), maxHealth(100), attack(10), defense(5),
       speed(1), range(1), alive(true), cooldown(0), targetId("") {}
 
-void Unit::takeDamage(int damage) {
-    health -= damage;
-    if (health <= 0) {
-        health = 0;
-        alive = false;
-    }
-}
-
-void Unit::heal(int amount) {
-    health = std::min(health + amount, maxHealth);
-}
-
 // BattleEngine implementation
 BattleEngine::BattleEngine(int width, int height, int maxTicks)
     : gridWidth_(width), gridHeight_(height), maxTicks_(maxTicks) {

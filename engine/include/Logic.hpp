@@ -18,6 +18,7 @@ public:
 
 class BasicAI : public Logic {
 public:
+    BasicAI();
     ActionType decideAction(const Unit& unit) override;
     Position decideTarget(const Unit& unit) override;
 };

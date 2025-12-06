@@ -7,11 +7,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Source files
 set(SOURCES
     src/BattleEngine.cpp
+    src/Unit.cpp
+    src/Map.cpp
+    src/Logic.cpp
 )
 
 # Header files
 set(HEADERS
     include/BattleEngine.h
+    include/Unit.hpp
+    include/Map.hpp
+    include/Logic.hpp
+    include/Types.hpp
 )
 
 # Include directories

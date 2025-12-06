@@ -79,6 +79,7 @@ app.use('*', (req, res) => {
 const server = app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`)
   console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`)
+  console.log(`⚡ Battle Engine: ${process.env.USE_WASM === 'true' ? 'WASM C++ (High Performance)' : 'JavaScript'}`)
 })
 
 // Graceful shutdown

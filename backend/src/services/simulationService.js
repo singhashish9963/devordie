@@ -1,8 +1,33 @@
 import { SimulationEngine } from './engine.js'
+import { getWASMEngine } from './wasmEngine.js'
+import dotenv from 'dotenv'
+
+// Ensure dotenv is loaded before checking environment
+dotenv.config()
 
 export class SimulationService {
   constructor() {
     this.activeSimulations = new Map()
+    this._useWASM = null // Lazy initialization
+  }
+  
+  // Getter for useWASM that checks environment on first access
+  get useWASM() {
+    if (this._useWASM === null) {
+      this._useWASM = process.env.USE_WASM === 'true'
+      console.log(`🚀 Using ${this._useWASM ? 'WASM C++' : 'JavaScript'} engine (${process.env.USE_WASM ? 'USE_WASM=' + process.env.USE_WASM : 'USE_WASM not set'})`)
+    }
+    return this._useWASM
+  }
+  
+  set useWASM(value) {
+    this._useWASM = value
+  }
+
+  // Toggle engine type
+  setEngineType(useWASM) {
+    this._useWASM = useWASM
+    console.log(`🔧 Switched to ${useWASM ? 'WASM' : 'JavaScript'} engine`)
   }
 
   // Create new simulation
@@ -19,13 +44,15 @@ export class SimulationService {
         engine,
         config,
         createdAt: new Date(),
-        status: 'created'
+        status: 'created',
+        useWASM: this.useWASM
       })
 
       return {
         success: true,
         simulationId,
-        message: 'Simulation created successfully'
+        message: 'Simulation created successfully',
+        engine: this.useWASM ? 'wasm' : 'javascript'
       }
     } catch (error) {
       return {
@@ -35,7 +62,7 @@ export class SimulationService {
     }
   }
 
-  // Start simulation
+  // Start simulation (supports both JS and WASM)
   async startSimulation(simulationId) {
     const simulation = this.activeSimulations.get(simulationId)
     if (!simulation) {
@@ -43,20 +70,65 @@ export class SimulationService {
     }
 
     try {
-      const result = await simulation.engine.runFull()
+      let result
+      const startTime = Date.now()
+
+      if (simulation.useWASM || this.useWASM) {
+        // Use WASM engine
+        console.log('⚡ Running simulation with WASM engine...')
+        const wasmEngine = getWASMEngine()
+        
+        // Convert config to WASM format
+        const wasmConfig = this.convertConfigForWASM(simulation.config)
+        result = await wasmEngine.runSimulation(wasmConfig)
+      } else {
+        // Use JavaScript engine
+        console.log('🐌 Running simulation with JavaScript engine...')
+        result = await simulation.engine.runFull()
+        result = {
+          ...result.result,
+          duration: Date.now() - startTime,
+          engine: 'javascript'
+        }
+      }
+
       simulation.status = 'completed'
       simulation.result = result
 
       return {
         success: true,
-        result: result.result
+        result,
+        engine: simulation.useWASM || this.useWASM ? 'wasm' : 'javascript'
       }
     } catch (error) {
       simulation.status = 'failed'
+      console.error('Simulation error:', error)
       return {
         success: false,
         error: error.message
       }
+    }
+  }
+
+  // Convert configuration to WASM format
+  convertConfigForWASM(config) {
+    const { gridSize, units, terrain } = config
+
+    // Convert terrain
+    const terrainGrid = terrain || Array(gridSize.height).fill(null).map(() =>
+      Array(gridSize.width).fill({ type: 'ground', speedMultiplier: 1.0 })
+    )
+
+    // Flatten units
+    const allUnits = [
+      ...units.teamA.map(u => ({ ...u, team: 'A' })),
+      ...units.teamB.map(u => ({ ...u, team: 'B' }))
+    ]
+
+    return {
+      terrain: terrainGrid,
+      units: allUnits,
+      maxTicks: config.maxTicks || 1000
     }
   }
 

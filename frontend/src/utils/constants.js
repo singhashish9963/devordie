@@ -90,7 +90,7 @@ export const UNIT_TYPES = {
     health: 100,
     attack: 15,
     defense: 10,
-    speed: 3, // Increased from 2
+    speed: 1.5,
     range: 1,
     description: 'Balanced infantry unit',
     emoji: '⚔️'
@@ -102,7 +102,7 @@ export const UNIT_TYPES = {
     health: 80,
     attack: 20,
     defense: 5,
-    speed: 2, // Increased from 1
+    speed: 1,
     range: 3,
     description: 'Long-range attacker',
     emoji: '🏹'
@@ -114,7 +114,7 @@ export const UNIT_TYPES = {
     health: 150,
     attack: 25,
     defense: 20,
-    speed: 2, // Increased from 1
+    speed: 1,
     range: 2,
     description: 'Heavy armored unit',
     emoji: '🛡️'
@@ -126,7 +126,7 @@ export const UNIT_TYPES = {
     health: 50,
     attack: 12,
     defense: 2,
-    speed: 5,
+    speed: 3,
     range: 4,
     description: 'Fast reconnaissance unit - ignores terrain penalties',
     emoji: '🚁',
@@ -142,30 +142,13 @@ export const UNIT_TYPES = {
     health: 60,
     attack: 35,
     defense: 3,
-    speed: 2,
+    speed: 1,
     range: 5,
     description: 'Extreme range, high damage, slow attack',
     emoji: '🎯',
     special: {
       criticalChance: 0.3,
       attackCooldown: 5
-    }
-  },
-  MEDIC: {
-    id: 'medic',
-    name: 'Medic',
-    color: '#FF69B4',
-    health: 70,
-    attack: 5,
-    defense: 8,
-    speed: 3,
-    range: 1,
-    description: 'Heals nearby allies instead of attacking',
-    emoji: '⚕️',
-    special: {
-      healAmount: 15,
-      healRange: 2,
-      healCooldown: 3
     }
   }
 }
