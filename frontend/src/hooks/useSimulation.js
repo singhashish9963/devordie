@@ -47,6 +47,7 @@ export const useSimulation = () => {
       }
       
       // Create simulation on backend
+      console.log('🚀 Creating simulation with WASM engine...')
       const response = await simulationAPI.create(config)
       
       if (response.success) {
@@ -55,8 +56,10 @@ export const useSimulation = () => {
           status: SIMULATION_STATUS.IDLE,
           tick: 0,
           units: [],
-          logs: ['Simulation initialized with backend'],
-          winner: null
+          logs: [`Simulation initialized - Engine: ${response.engine || 'unknown'}`],
+          winner: null,
+          engine: response.engine, // 'wasm' or 'javascript'
+          executionTime: null
         })
         return { success: true }
       } else {
@@ -97,13 +100,15 @@ export const useSimulation = () => {
         if (response.success) {
           const isFinished = response.state.status === 'finished' || response.state.winner
           
-          setSimulationState({
+          setSimulationState(prev => ({
             status: isFinished ? SIMULATION_STATUS.FINISHED : SIMULATION_STATUS.RUNNING,
             tick: response.state.tick,
             units: response.state.units,
             logs: response.state.logs,
-            winner: response.state.winner
-          })
+            winner: response.state.winner,
+            engine: prev.engine, // Preserve engine type
+            executionTime: response.executionTime || prev.executionTime // Update if provided
+          }))
 
           // Continue stepping if not finished
           if (!isFinished) {

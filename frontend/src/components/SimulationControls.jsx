@@ -52,6 +52,16 @@ const SimulationControls = () => {
       <div className="controls-header">
         <h3>Simulation</h3>
         <div className="header-right">
+          {simulationState.engine && (
+            <div className={`engine-badge ${simulationState.engine}`} title={`Engine: ${simulationState.engine === 'wasm' ? 'C++ WebAssembly (High Performance)' : 'JavaScript'}`}>
+              {simulationState.engine === 'wasm' ? '⚡ C++ WASM' : '🐌 JavaScript'}
+            </div>
+          )}
+          {simulationState.executionTime && (
+            <div className="execution-time" title="Execution time">
+              ⏱️ {simulationState.executionTime}ms
+            </div>
+          )}
           <div className={`backend-status ${backendStatus}`} title={`Backend: ${backendStatus}`}>
             <span className="status-dot"></span>
             {backendStatus === 'connected' ? 'Backend' : backendStatus === 'checking' ? 'Checking...' : 'Offline'}

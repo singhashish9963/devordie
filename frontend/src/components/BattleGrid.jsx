@@ -4,6 +4,12 @@ import { GRID_SIZE, TERRAIN_TYPES, TEAM_COLORS } from '../utils/constants'
 const BattleGrid = ({ terrain, units, onCellClick, showUnits = true }) => {
   const canvasRef = useRef(null)
   const [unitPositions, setUnitPositions] = useState({})
+  const terrainRef = useRef(terrain)
+
+  // Update terrain ref when terrain changes
+  useEffect(() => {
+    terrainRef.current = terrain
+  }, [terrain])
 
   // Smooth position interpolation
   useEffect(() => {
@@ -35,16 +41,18 @@ const BattleGrid = ({ terrain, units, onCellClick, showUnits = true }) => {
 
     const ctx = canvas.getContext('2d')
     const cellSize = GRID_SIZE.CELL_SIZE
+    let animationFrameId
 
-    const animate = () => {
+    const draw = () => {
       // Clear canvas with background
       ctx.fillStyle = '#1a1a1a'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Draw terrain with no grid lines (smooth battlefield look)
+      const currentTerrain = terrainRef.current
       for (let row = 0; row < GRID_SIZE.HEIGHT; row++) {
         for (let col = 0; col < GRID_SIZE.WIDTH; col++) {
-          const terrainId = terrain[row][col]
+          const terrainId = currentTerrain[row][col]
           const terrainType = Object.values(TERRAIN_TYPES).find(t => t.id === terrainId)
           
           ctx.fillStyle = terrainType?.color || TERRAIN_TYPES.GROUND.color
@@ -131,10 +139,16 @@ const BattleGrid = ({ terrain, units, onCellClick, showUnits = true }) => {
         })
       }
 
-      requestAnimationFrame(animate)
+      animationFrameId = requestAnimationFrame(draw)
     }
 
-    animate()
+    draw()
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId)
+      }
+    }
   }, [terrain, units, showUnits, unitPositions])
 
   const handleCanvasClick = (e) => {
