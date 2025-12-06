@@ -68,3 +68,8 @@ docker-compose.override.yml
 deploy/
 *.pem
 *.key
+
+#Virtual Environments
+venv/
+__pycache__/
+*.pyc
