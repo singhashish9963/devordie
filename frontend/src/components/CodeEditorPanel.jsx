@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSimulationContext } from '../context/SimulationContext'
+import AICodeGenerator from './AICodeGenerator'
 import '../styles/CodeEditorPanel.css'
 
 const CodeEditorPanel = () => {
@@ -10,23 +11,34 @@ const CodeEditorPanel = () => {
     updateCode(selectedTeam, e.target.value)
   }
 
+  const handleAICodeGenerated = (code) => {
+    updateCode(selectedTeam, code)
+  }
+
   return (
     <div className="code-editor-panel">
       <div className="editor-header">
         <h3>AI Strategy Code</h3>
-        <div className="team-tabs">
-          <button
-            className={`tab ${selectedTeam === 'teamA' ? 'active' : ''}`}
-            onClick={() => setSelectedTeam('teamA')}
-          >
-            Team A Code
-          </button>
-          <button
-            className={`tab ${selectedTeam === 'teamB' ? 'active' : ''}`}
-            onClick={() => setSelectedTeam('teamB')}
-          >
-            Team B Code
-          </button>
+        <div className="editor-header-actions">
+          <div className="team-tabs">
+            <button
+              className={`tab ${selectedTeam === 'teamA' ? 'active' : ''}`}
+              onClick={() => setSelectedTeam('teamA')}
+            >
+              Team A Code
+            </button>
+            <button
+              className={`tab ${selectedTeam === 'teamB' ? 'active' : ''}`}
+              onClick={() => setSelectedTeam('teamB')}
+            >
+              Team B Code
+            </button>
+          </div>
+          <AICodeGenerator 
+            onCodeGenerated={handleAICodeGenerated}
+            unitTypes={editorState.units[selectedTeam]?.map(u => u.type) || []}
+            terrainTypes={['ground', 'mountain', 'water']}
+          />
         </div>
       </div>
 
