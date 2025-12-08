@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import '../styles/Auth.css'
 
-const Login = ({ onSwitchToSignup, onClose }) => {
+const Login = ({ onSwitchToSignup, onForgotPassword, onClose }) => {
   const { login } = useAuth()
   const [formData, setFormData] = useState({
     email: '',
@@ -30,6 +30,9 @@ const Login = ({ onSwitchToSignup, onClose }) => {
 
     if (result.success) {
       onClose()
+    } else if (result.requiresVerification) {
+      // AuthModal will show VerifyEmailModal automatically
+      setError('')
     } else {
       setError(result.message || 'Login failed')
     }
@@ -65,6 +68,12 @@ const Login = ({ onSwitchToSignup, onClose }) => {
             required
             autoComplete="current-password"
           />
+        </div>
+
+        <div className="forgot-password-link">
+          <button type="button" onClick={onForgotPassword} className="link-btn">
+            Forgot password?
+          </button>
         </div>
 
         <button type="submit" className="submit-btn" disabled={loading}>

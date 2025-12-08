@@ -22,6 +22,53 @@ export const authAPI = {
     return response.json()
   },
 
+  async verifyEmail(email, otp) {
+    const response = await fetch(`${API_BASE_URL}/api/auth/verify-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email, otp })
+    })
+    return response.json()
+  },
+
+  async resendOTP(email) {
+    const response = await fetch(`${API_BASE_URL}/api/auth/resend-otp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email })
+    })
+    return response.json()
+  },
+
+  async forgotPassword(email) {
+    const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    })
+    return response.json()
+  },
+
+  async verifyResetOTP(email, otp) {
+    const response = await fetch(`${API_BASE_URL}/api/auth/verify-reset-otp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, otp })
+    })
+    return response.json()
+  },
+
+  async resetPassword(email, otp, newPassword) {
+    const response = await fetch(`${API_BASE_URL}/api/auth/reset-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, otp, newPassword })
+    })
+    return response.json()
+  },
+
   async logout() {
     const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
       method: 'POST',

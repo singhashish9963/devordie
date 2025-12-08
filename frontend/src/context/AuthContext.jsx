@@ -15,6 +15,9 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [needsVerification, setNeedsVerification] = useState(false)
+  const [verificationEmail, setVerificationEmail] = useState('')
+  const [verificationUserId, setVerificationUserId] = useState(null)
 
   // Check if user is logged in on mount
   useEffect(() => {
@@ -44,6 +47,18 @@ export const AuthProvider = ({ children }) => {
       const response = await authAPI.signup(name, email, password)
       
       if (response.success) {
+        // Check if verification is required
+        if (response.requiresVerification) {
+          setNeedsVerification(true)
+          setVerificationEmail(response.email)
+          setVerificationUserId(response.userId)
+          return { 
+            success: true, 
+            requiresVerification: true,
+            message: response.message 
+          }
+        }
+        
         setUser(response.user)
         return { success: true }
       } else {
@@ -64,8 +79,21 @@ export const AuthProvider = ({ children }) => {
       
       if (response.success) {
         setUser(response.user)
+        setNeedsVerification(false)
         return { success: true }
       } else {
+        // Check if verification is required
+        if (response.requiresVerification) {
+          setNeedsVerification(true)
+          setVerificationEmail(response.email)
+          setVerificationUserId(response.userId)
+          return { 
+            success: false, 
+            requiresVerification: true,
+            message: response.message 
+          }
+        }
+        
         setError(response.message || 'Login failed')
         return { success: false, message: response.message }
       }
@@ -73,6 +101,40 @@ export const AuthProvider = ({ children }) => {
       const message = 'Login failed. Please try again.'
       setError(message)
       return { success: false, message }
+    }
+  }
+
+  const verifyEmail = async (otp) => {
+    try {
+      setError(null)
+      const response = await authAPI.verifyEmail(verificationEmail, otp)
+      
+      if (response.success) {
+        setUser(response.user)
+        setNeedsVerification(false)
+        setVerificationEmail('')
+        setVerificationUserId(null)
+        return { success: true }
+      } else {
+        throw new Error(response.message || 'Verification failed')
+      }
+    } catch (err) {
+      throw err
+    }
+  }
+
+  const resendOTP = async () => {
+    try {
+      setError(null)
+      const response = await authAPI.resendOTP(verificationEmail)
+      
+      if (response.success) {
+        return { success: true, message: response.message }
+      } else {
+        throw new Error(response.message || 'Failed to resend code')
+      }
+    } catch (err) {
+      throw err
     }
   }
 
@@ -110,11 +172,15 @@ export const AuthProvider = ({ children }) => {
     loading,
     error,
     isAuthenticated: !!user,
+    needsVerification,
+    verificationEmail,
     signup,
     login,
     logout,
     updateProfile,
-    checkAuth
+    checkAuth,
+    verifyEmail,
+    resendOTP
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
