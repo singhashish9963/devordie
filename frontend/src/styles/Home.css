@@ -57,7 +57,7 @@
 
 .mode-selection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -140,6 +140,15 @@
   background: #1e293b;
   border-color: #334155;
   cursor: not-allowed;
+}
+
+.mode-btn.pvp {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  border-color: #38a169;
+}
+
+.mode-btn.pvp:hover {
+  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
 }
 
 .mode-btn.war:hover {

@@ -3,12 +3,15 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
+import { createServer } from 'http'
+import { Server } from 'socket.io'
 import simulationRoutes from './routes/simulation.js'
 import configRoutes from './routes/config.js'
 import battleRoutes from './routes/battle.js'
 import authRoutes from './routes/auth.js'
 import configurationRoutes from './routes/configs.js'
 import aiRoutes from './routes/ai.js'
+import warBattleRoutes from './routes/battles.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import { requestLogger } from './middlewares/logger.js'
 
@@ -67,6 +70,7 @@ app.use('/api/configurations', configurationRoutes)
 app.use('/api/simulations', simulationRoutes)
 app.use('/api/configs', configRoutes)
 app.use('/api/battles', battleRoutes)
+app.use('/api/war', warBattleRoutes)
 app.use('/api/ai', aiRoutes)
 
 // Error handling
@@ -78,10 +82,47 @@ app.use('*', (req, res) => {
 })
 
 // Start server
-const server = app.listen(PORT, () => {
+const httpServer = createServer(app)
+const io = new Server(httpServer, {
+  cors: {
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:5173',
+      process.env.FRONTEND_URL
+    ].filter(Boolean),
+    credentials: true
+  }
+})
+
+// Socket.IO connection handling
+io.on('connection', (socket) => {
+  console.log(`🔌 Client connected: ${socket.id}`)
+
+  // Join battle room
+  socket.on('join-battle', (battleId) => {
+    socket.join(`battle-${battleId}`)
+    console.log(`👥 Socket ${socket.id} joined battle room: ${battleId}`)
+  })
+
+  // Leave battle room
+  socket.on('leave-battle', (battleId) => {
+    socket.leave(`battle-${battleId}`)
+    console.log(`👋 Socket ${socket.id} left battle room: ${battleId}`)
+  })
+
+  socket.on('disconnect', () => {
+    console.log(`🔌 Client disconnected: ${socket.id}`)
+  })
+})
+
+// Export io for use in other modules
+export { io }
+
+const server = httpServer.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`)
   console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`)
   console.log(`⚡ Battle Engine: ${process.env.USE_WASM === 'true' ? 'WASM C++ (High Performance)' : 'JavaScript'}`)
+  console.log(`🔌 WebSocket enabled for real-time battles`)
 })
 
 // Graceful shutdown

@@ -45,6 +45,19 @@ const Home = () => {
             </ul>
             <button className="mode-btn war">Coming Soon</button>
           </div>
+
+          <div className="mode-card" onClick={() => navigate('/pvp')}>
+            <div className="mode-icon">🎮</div>
+            <h2>PvP Arena (NEW!)</h2>
+            <p>Challenge friends to epic AI vs AI battles with shareable battle codes</p>
+            <ul className="mode-features">
+              <li>Create custom battles</li>
+              <li>Share battle codes</li>
+              <li>Real-time combat</li>
+              <li>Battle replays</li>
+            </ul>
+            <button className="mode-btn pvp">Play Now</button>
+          </div>
         </div>
 
         <footer className="home-footer">
