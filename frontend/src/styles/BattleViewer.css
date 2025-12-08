@@ -245,22 +245,58 @@
   font-size: 14px;
 }
 
-.rematch-btn {
+.result-actions {
+  display: flex;
+  gap: 12px;
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
+}
+
+.analysis-btn {
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.analysis-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, #7c8ef7 0%, #8a5db8 100%);
+}
+
+.rematch-btn {
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 15px;
   font-weight: 600;
   background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
 }
 
 .rematch-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(66, 153, 225, 0.5);
+  background: linear-gradient(135deg, #5ab0f0 0%, #4299e1 100%);
 }
 
 /* Battlefield Panel */
