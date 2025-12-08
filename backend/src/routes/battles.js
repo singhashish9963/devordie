@@ -2,6 +2,7 @@ import express from 'express';
 import Battle from '../models/Battle.js';
 import { authMiddleware } from '../middleware/auth.js';
 import BattleService from '../services/battleService.js';
+import BattleAnalysisService from '../services/battleAnalysisService.js';
 import { io } from '../index.js';
 
 const router = express.Router();
@@ -587,6 +588,131 @@ router.get('/:battleId/replay', authMiddleware, async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to get battle replay',
+      error: error.message
+    });
+  }
+});
+
+// @route   GET /api/battles/:battleId/analysis
+// @desc    Get AI-powered battle analysis for both players
+// @access  Private
+router.get('/:battleId/analysis', authMiddleware, async (req, res) => {
+  try {
+    const { battleId } = req.params;
+
+    const battle = await Battle.findById(battleId)
+      .populate('player1.userId', 'name')
+      .populate('player2.userId', 'name');
+
+    if (!battle) {
+      return res.status(404).json({
+        success: false,
+        message: 'Battle not found'
+      });
+    }
+
+    // Verify user is a participant
+    const playerRole = battle.getPlayerRole(req.user._id);
+    if (!playerRole) {
+      return res.status(403).json({
+        success: false,
+        message: 'You must be a participant to view battle analysis'
+      });
+    }
+
+    if (battle.status !== 'completed') {
+      return res.status(400).json({
+        success: false,
+        message: 'Battle analysis is only available for completed battles'
+      });
+    }
+
+    // Check if analysis already exists
+    if (battle.analysis) {
+      return res.json({
+        success: true,
+        analysis: battle.analysis,
+        cached: true
+      });
+    }
+
+    // Generate new analysis using Gemini 2.0 Flash
+    console.log(`🤖 Generating analysis for battle ${battle.battleCode}...`);
+    const analysis = await BattleAnalysisService.analyzeBattle(battle);
+
+    // Save analysis to battle document
+    battle.analysis = analysis;
+    await battle.save();
+
+    res.json({
+      success: true,
+      analysis,
+      cached: false
+    });
+
+  } catch (error) {
+    console.error('Get battle analysis error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to generate battle analysis',
+      error: error.message
+    });
+  }
+});
+
+// @route   POST /api/battles/:battleId/analysis/regenerate
+// @desc    Force regenerate battle analysis
+// @access  Private
+router.post('/:battleId/analysis/regenerate', authMiddleware, async (req, res) => {
+  try {
+    const { battleId } = req.params;
+
+    const battle = await Battle.findById(battleId)
+      .populate('player1.userId', 'name')
+      .populate('player2.userId', 'name');
+
+    if (!battle) {
+      return res.status(404).json({
+        success: false,
+        message: 'Battle not found'
+      });
+    }
+
+    // Verify user is a participant
+    const playerRole = battle.getPlayerRole(req.user._id);
+    if (!playerRole) {
+      return res.status(403).json({
+        success: false,
+        message: 'You must be a participant to regenerate battle analysis'
+      });
+    }
+
+    if (battle.status !== 'completed') {
+      return res.status(400).json({
+        success: false,
+        message: 'Battle must be completed to generate analysis'
+      });
+    }
+
+    // Generate fresh analysis
+    console.log(`🔄 Regenerating analysis for battle ${battle.battleCode}...`);
+    const analysis = await BattleAnalysisService.analyzeBattle(battle);
+
+    // Update battle document
+    battle.analysis = analysis;
+    await battle.save();
+
+    res.json({
+      success: true,
+      analysis,
+      regenerated: true
+    });
+
+  } catch (error) {
+    console.error('Regenerate analysis error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to regenerate battle analysis',
       error: error.message
     });
   }

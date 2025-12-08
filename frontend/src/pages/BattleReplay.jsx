@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import BattleAnalysis from '../components/BattleAnalysis';
 import '../styles/BattleReplay.css';
 
 function BattleReplay() {
@@ -14,6 +15,8 @@ function BattleReplay() {
   const [currentTick, setCurrentTick] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [showAnalysis, setShowAnalysis] = useState(false);
+  const [playerRole, setPlayerRole] = useState(null);
 
   useEffect(() => {
     fetchReplay();
@@ -52,6 +55,9 @@ function BattleReplay() {
       if (data.success) {
         setReplay(data.replay);
         setBattleInfo(data.battleInfo);
+        // Determine player role (assume we can get from auth or battle data)
+        // For now, default to player1 for replay viewing
+        setPlayerRole('player1');
       } else {
         setError(data.message || 'Failed to load replay');
       }
@@ -261,6 +267,9 @@ TICK-BY-TICK REPLAY:
         <button onClick={() => navigate('/pvp')} className="back-btn">← Back</button>
         <h1>Battle Replay: {battleInfo?.battleCode}</h1>
         <div className="header-actions">
+          <button onClick={() => setShowAnalysis(true)} className="analysis-btn" title="View AI-powered battle analysis">
+            🤖 AI Analysis
+          </button>
           <button onClick={exportReplayLogs} className="export-btn" title="Export full replay logs">
             📄 Export Logs
           </button>
@@ -361,6 +370,15 @@ TICK-BY-TICK REPLAY:
           </div>
         </div>
       </div>
+
+      {/* AI Battle Analysis Modal */}
+      {showAnalysis && (
+        <BattleAnalysis 
+          battleId={battleId}
+          playerRole={playerRole}
+          onClose={() => setShowAnalysis(false)}
+        />
+      )}
     </div>
   );
 }

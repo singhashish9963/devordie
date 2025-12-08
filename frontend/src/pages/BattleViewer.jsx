@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getSocket } from '../services/socket';
+import BattleAnalysis from '../components/BattleAnalysis';
 import '../styles/BattleViewer.css';
 
 function BattleViewer() {
@@ -16,6 +17,8 @@ function BattleViewer() {
   const [error, setError] = useState('');
   const [canStart, setCanStart] = useState(false);
   const [battleStatus, setBattleStatus] = useState('waiting'); // waiting, in_progress, completed
+  const [showAnalysis, setShowAnalysis] = useState(false);
+  const [playerRole, setPlayerRole] = useState(null);
   
   const canvasRef = useRef(null);
   const socket = useRef(null);
@@ -71,6 +74,7 @@ function BattleViewer() {
       if (data.success) {
         setBattle(data.battle);
         setBattleStatus(data.battle.status);
+        setPlayerRole(data.yourRole); // Save player role from API
         
         // Check if both players are ready
         const bothReady = data.battle.player1?.submitted && data.battle.player2?.submitted;
@@ -139,7 +143,11 @@ function BattleViewer() {
     ]);
 
     // Refresh battle data to show results
-    setTimeout(fetchBattleDetails, 1000);
+    setTimeout(() => {
+      fetchBattleDetails();
+      // Auto-show analysis after battle ends
+      setTimeout(() => setShowAnalysis(true), 2000);
+    }, 1000);
   };
 
   const drawBattlefield = () => {
@@ -308,7 +316,6 @@ COMBAT LOG:
     return <div className="loading-screen">Loading battle...</div>;
   }
 
-  const playerRole = battle?.yourRole;
   const player1 = battle?.player1;
   const player2 = battle?.player2;
 
@@ -431,9 +438,14 @@ COMBAT LOG:
                 <div>Ticks: {battle.result.ticks}</div>
                 <div>Reason: {battle.result.endReason}</div>
               </div>
-              <button className="rematch-btn" onClick={() => navigate('/pvp')}>
-                🔄 New Battle
-              </button>
+              <div className="result-actions">
+                <button className="analysis-btn" onClick={() => setShowAnalysis(true)}>
+                  🤖 View AI Analysis
+                </button>
+                <button className="rematch-btn" onClick={() => navigate('/pvp')}>
+                  🔄 New Battle
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -477,6 +489,15 @@ COMBAT LOG:
           </div>
         </div>
       </div>
+
+      {/* AI Battle Analysis Modal */}
+      {showAnalysis && battleStatus === 'completed' && (
+        <BattleAnalysis 
+          battleId={battleId}
+          playerRole={playerRole}
+          onClose={() => setShowAnalysis(false)}
+        />
+      )}
     </div>
   );
 }
