@@ -249,6 +249,61 @@ function BattleViewer() {
     }
   };
 
+  const exportBattleLogs = () => {
+    try {
+      // Prepare log content
+      const logHeader = `=================================
+BATTLE LOG EXPORT
+=================================
+Battle Code: ${battle?.battleCode || 'N/A'}
+Battle ID: ${battleId}
+Status: ${battleStatus}
+Exported: ${new Date().toLocaleString()}
+=================================
+
+BATTLE INFORMATION:
+Player 1: ${battle?.player1?.username || 'N/A'}
+Player 2: ${battle?.player2?.username || 'N/A'}
+Started: ${battle?.startedAt ? new Date(battle.startedAt).toLocaleString() : 'N/A'}
+${battle?.completedAt ? `Completed: ${new Date(battle.completedAt).toLocaleString()}` : ''}
+${battle?.result?.winner ? `Winner: ${battle.result.winner === 'draw' ? 'DRAW' : battle.result.winner === 'player1' ? battle.player1.username : battle.player2.username}` : ''}
+${battle?.result?.ticks ? `Total Ticks: ${battle.result.ticks}` : ''}
+
+=================================
+COMBAT LOG:
+=================================
+
+`;
+
+      // Format combat log entries
+      const logEntries = combatLog.map((log, index) => {
+        const timestamp = `[${index.toString().padStart(4, '0')}]`;
+        const typeLabel = log.type === 'combat' ? '[COMBAT]' : 
+                         log.type === 'move' ? '[MOVE]' : 
+                         '[INFO]';
+        return `${timestamp} ${typeLabel} ${log.message}`;
+      }).join('\n');
+
+      const fullLog = logHeader + logEntries;
+
+      // Create blob and download
+      const blob = new Blob([fullLog], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `battle-log-${battle?.battleCode || battleId}-${Date.now()}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      console.log('✅ Battle logs exported successfully');
+    } catch (error) {
+      console.error('Failed to export logs:', error);
+      setError('Failed to export battle logs');
+    }
+  };
+
   if (loading) {
     return <div className="loading-screen">Loading battle...</div>;
   }
@@ -398,7 +453,16 @@ function BattleViewer() {
 
         {/* Right: Combat Log */}
         <div className="combat-log-panel">
-          <h3>Combat Log</h3>
+          <div className="combat-log-header">
+            <h3>Combat Log</h3>
+            <button 
+              className="export-logs-btn" 
+              onClick={exportBattleLogs}
+              title="Export battle logs as text file"
+            >
+              📄 Export
+            </button>
+          </div>
           <div className="combat-log">
             {combatLog.length === 0 ? (
               <div className="log-empty">Waiting for battle to start...</div>

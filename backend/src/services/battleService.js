@@ -64,6 +64,16 @@ export class BattleService {
         player2: { kills: 0, damage: 0, unitsLost: 0, finalHP: 0 }
       };
 
+      // Replay data storage
+      const replayData = {
+        initialState: {
+          player1Units: JSON.parse(JSON.stringify(player1Units)),
+          player2Units: JSON.parse(JSON.stringify(player2Units)),
+          configuration: battle.configuration
+        },
+        ticks: []
+      };
+
       // Simulation loop
       while (currentTick < maxTicks) {
         // Check victory conditions
@@ -145,6 +155,14 @@ export class BattleService {
           events: tickEvents
         });
 
+        // Save tick data for replay
+        replayData.ticks.push({
+          tick: currentTick,
+          player1Units: JSON.parse(JSON.stringify(player1Units)),
+          player2Units: JSON.parse(JSON.stringify(player2Units)),
+          events: tickEvents
+        });
+
         currentTick++;
 
         // Delay between ticks (100ms)
@@ -189,6 +207,7 @@ export class BattleService {
         endReason,
         stats
       };
+      battle.replay = replayData;
 
       await battle.save();
 
@@ -258,21 +277,28 @@ export class BattleService {
     }
 
     if (decision.action === 'move' && decision.target) {
+      // Clamp target position to grid boundaries (0-19)
+      const clampedX = Math.max(0, Math.min(19, Math.round(decision.target.x)));
+      const clampedY = Math.max(0, Math.min(19, Math.round(decision.target.y)));
+      
       // Validate and move
-      const dx = decision.target.x - unit.position.x;
-      const dy = decision.target.y - unit.position.y;
+      const dx = clampedX - unit.position.x;
+      const dy = clampedY - unit.position.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance <= unit.speed) {
-        unit.position.x = decision.target.x;
-        unit.position.y = decision.target.y;
+        const oldX = unit.position.x;
+        const oldY = unit.position.y;
+        
+        unit.position.x = clampedX;
+        unit.position.y = clampedY;
 
         return {
           type: 'move',
           player,
           unitType: unit.type,
-          from: { x: unit.position.x - dx, y: unit.position.y - dy },
-          to: decision.target
+          from: { x: oldX, y: oldY },
+          to: { x: clampedX, y: clampedY }
         };
       }
     }

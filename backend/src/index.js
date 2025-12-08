@@ -12,6 +12,7 @@ import authRoutes from './routes/auth.js'
 import configurationRoutes from './routes/configs.js'
 import aiRoutes from './routes/ai.js'
 import warBattleRoutes from './routes/battles.js'
+import strategyRoutes from './routes/strategies.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import { requestLogger } from './middlewares/logger.js'
 
@@ -71,6 +72,7 @@ app.use('/api/simulations', simulationRoutes)
 app.use('/api/configs', configRoutes)
 app.use('/api/battles', battleRoutes)
 app.use('/api/war', warBattleRoutes)
+app.use('/api/ai', strategyRoutes)
 app.use('/api/ai', aiRoutes)
 
 // Error handling

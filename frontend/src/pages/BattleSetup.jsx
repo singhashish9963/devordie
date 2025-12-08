@@ -57,6 +57,10 @@ function getAction(state) {
 }
 `);
 
+  // Saved strategies state
+  const [savedStrategies, setSavedStrategies] = useState([]);
+  const [selectedStrategy, setSelectedStrategy] = useState('');
+
   const unitTypes = [
     { type: 'soldier', name: 'Soldier', icon: '🪖', cost: 100, hp: 100, attack: 20, defense: 10, range: 1, speed: 5 },
     { type: 'archer', name: 'Archer', icon: '🏹', cost: 80, hp: 80, attack: 15, defense: 5, range: 5, speed: 4 },
@@ -67,6 +71,7 @@ function getAction(state) {
 
   useEffect(() => {
     fetchBattleDetails();
+    fetchSavedStrategies();
   }, [battleId]);
 
   useEffect(() => {
@@ -102,6 +107,37 @@ function getAction(state) {
       console.error(error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchSavedStrategies = async () => {
+    try {
+      console.log('Fetching saved strategies...');
+      const response = await fetch('http://localhost:5000/api/ai/strategies', {
+        credentials: 'include'
+      });
+
+      console.log('Response status:', response.status);
+      const data = await response.json();
+      console.log('Strategies data:', data);
+
+      if (data.success && data.strategies) {
+        setSavedStrategies(data.strategies);
+        console.log('✅ Loaded', data.strategies.length, 'strategies');
+      } else {
+        console.log('No strategies found or request failed');
+      }
+    } catch (error) {
+      console.error('Failed to load saved strategies:', error);
+    }
+  };
+
+  const handleLoadStrategy = (strategyId) => {
+    const strategy = savedStrategies.find(s => s._id === strategyId);
+    if (strategy) {
+      setAiCode(strategy.code);
+      setSelectedStrategy(strategyId);
+      console.log('✅ Loaded strategy:', strategy.name);
     }
   };
 
@@ -335,7 +371,45 @@ function getAction(state) {
 
         {/* Right Panel: AI Code Editor */}
         <div className="right-panel">
-          <h3>AI Strategy Code</h3>
+          <div className="strategy-header">
+            <h3>AI Strategy Code</h3>
+            <div className="strategy-loader">
+              <select 
+                value={selectedStrategy} 
+                onChange={(e) => handleLoadStrategy(e.target.value)}
+                className="strategy-select"
+              >
+                <option value="">💾 Load Strategy (Default or Saved)</option>
+                {savedStrategies.length > 0 ? (
+                  <>
+                    {/* Default strategies */}
+                    {savedStrategies.filter(s => s.isDefault).length > 0 && (
+                      <optgroup label="🎯 Default Strategies">
+                        {savedStrategies.filter(s => s.isDefault).map(strategy => (
+                          <option key={strategy._id} value={strategy._id}>
+                            {strategy.name}
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
+                    
+                    {/* User strategies */}
+                    {savedStrategies.filter(s => !s.isDefault).length > 0 && (
+                      <optgroup label="📝 My Strategies">
+                        {savedStrategies.filter(s => !s.isDefault).map(strategy => (
+                          <option key={strategy._id} value={strategy._id}>
+                            {strategy.name}
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
+                  </>
+                ) : (
+                  <option disabled>Loading strategies...</option>
+                )}
+              </select>
+            </div>
+          </div>
           <div className="code-editor">
             <CodeMirror
               value={aiCode}

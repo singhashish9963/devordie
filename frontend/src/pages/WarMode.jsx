@@ -212,9 +212,9 @@ function WarMode() {
                 </div>
                 <button
                   className="view-button"
-                  onClick={() => navigate(`/war/battle/${battle.id}`)}
+                  onClick={() => navigate(`/pvp/replay/${battle.id}`)}
                 >
-                  View Replay
+                  📽️ Watch Replay
                 </button>
               </div>
             ))}

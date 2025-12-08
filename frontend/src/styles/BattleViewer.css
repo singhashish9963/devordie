@@ -322,10 +322,35 @@
   max-height: calc(100vh - 200px);
 }
 
+.combat-log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .combat-log-panel h3 {
   font-size: 20px;
   color: #fff;
-  margin-bottom: 16px;
+  margin: 0;
+}
+
+.export-logs-btn {
+  padding: 8px 16px;
+  background: rgba(72, 187, 120, 0.1);
+  border: 1px solid #48bb78;
+  border-radius: 8px;
+  color: #68d391;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.export-logs-btn:hover {
+  background: rgba(72, 187, 120, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
 }
 
 .combat-log {

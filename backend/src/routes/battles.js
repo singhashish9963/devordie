@@ -532,4 +532,64 @@ router.delete('/:battleId', authMiddleware, async (req, res) => {
   }
 });
 
+// @route   GET /api/battles/:battleId/replay
+// @desc    Get battle replay data
+// @access  Private
+router.get('/:battleId/replay', authMiddleware, async (req, res) => {
+  try {
+    const { battleId } = req.params;
+
+    const battle = await Battle.findById(battleId)
+      .populate('player1.userId', 'name')
+      .populate('player2.userId', 'name');
+
+    if (!battle) {
+      return res.status(404).json({
+        success: false,
+        message: 'Battle not found'
+      });
+    }
+
+    if (battle.status !== 'completed') {
+      return res.status(400).json({
+        success: false,
+        message: 'Battle replay is only available for completed battles'
+      });
+    }
+
+    if (!battle.replay) {
+      return res.status(404).json({
+        success: false,
+        message: 'Replay data not found for this battle'
+      });
+    }
+
+    res.json({
+      success: true,
+      replay: battle.replay,
+      battleInfo: {
+        battleCode: battle.battleCode,
+        player1: {
+          username: battle.player1.username,
+          aiCode: battle.player1.aiCode
+        },
+        player2: {
+          username: battle.player2.username,
+          aiCode: battle.player2.aiCode
+        },
+        result: battle.result,
+        startedAt: battle.startedAt,
+        completedAt: battle.completedAt
+      }
+    });
+  } catch (error) {
+    console.error('Get replay error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get battle replay',
+      error: error.message
+    });
+  }
+});
+
 export default router;

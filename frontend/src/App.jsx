@@ -8,6 +8,7 @@ import WarPage from './pages/WarPage'
 import WarMode from './pages/WarMode'
 import BattleSetup from './pages/BattleSetup'
 import BattleViewer from './pages/BattleViewer'
+import BattleReplay from './pages/BattleReplay'
 import './App.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
               <Route path="/pvp" element={<WarMode />} />
               <Route path="/war/setup/:battleId" element={<BattleSetup />} />
               <Route path="/pvp/battle/:battleId" element={<BattleViewer />} />
+              <Route path="/pvp/replay/:battleId" element={<BattleReplay />} />
             </Routes>
           </div>
         </Router>
