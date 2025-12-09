@@ -1,4 +1,5 @@
 # 🎮 DevOrDie - AI Battle Simulator
+# By - WebDemons
 
 > **Code Your Army. Dominate the Battlefield.**
 
