@@ -633,7 +633,41 @@ git push origin feature/amazing-feature
 
 MIT License - see [LICENSE](LICENSE) for details.
 
----
+## 📄Deployed Link-https://devordie-iota.vercel.app/
+
+## Team Members and Responsibilities:
+Ashish Singh: c++ backend;
+Arushi Nayak: Frontend
+Sahil Dora: Machine Learning part
+Yodaksha Apratim Singh:Auth,Optimization of codes,AI analysis
+
+## Future Improvements:
+
+### From ML Integration 
+1. AI Strategy Recommendation Engine
+What: Analyze player's battle history and suggest optimal strategies
+How: ML model trained on winning battles learns patterns (aggressive vs defensive, terrain preferences, unit compositions)
+Output: "Based on your 70% win rate with tank-heavy armies, try adding drones for scouting" or "Your code performs 30% better on mountain terrain - focus there"
+Benefit: Personalized improvement suggestions, faster skill progression
+2. Code Quality Analysis with ML
+What: Evaluate AI code efficiency and suggest optimizations
+How: Train model on thousands of battle replays to identify efficient vs inefficient code patterns
+Output: Score code 1-10, highlight bottlenecks ("Your nested loops slow down decisions by 40ms"), suggest alternatives ("Replace linear search with spatial hash grid")
+Benefit: Players learn to write better algorithms, reduces server load from inefficient code
+
+## From Defense Sector Adaptations
+3. Swarm Intelligence for Drone Coordination
+What: Control 10-100 drones as a coordinated swarm with distributed decision-making
+How: Leader-follower hierarchy where drones communicate, share targets, maintain formation, avoid collisions autonomously
+Output: Real-time swarm behaviors - surround enemy, flanking maneuvers, cover fire, tactical retreat as unit
+Benefit: Realistic military simulation, impressive for defense demos, research value for autonomous systems
+4. Realistic Sensor & Electronic Warfare Systems
+What: Units have limited vision/radar range, can jam enemy communications, hide from sensors
+How: Fog of war (only see within sensor radius), radio range limits, stealth mechanics, signal jamming disables enemy coordination
+Output: Strategic gameplay - scout with drones to reveal map, jam enemies before attack, use terrain to hide from radar
+Benefit: Authentic military simulation, teaches reconnaissance/counter-reconnaissance tactics, defense sector appeal
+
+MIT License - see [LICENSE](LICENSE) for details.
 
 ## 📞 Contact
 
