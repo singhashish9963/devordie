@@ -14,7 +14,9 @@ A cutting-edge, full-stack battle simulation platform where players write JavaSc
 
 ## 🌟 Overview
 
-**DevOrDie** is a sophisticated AI programming game where players design battle strategies through code. Write JavaScript AI logic to control units like soldiers, archers, tanks, drones, and snipers on customizable terrains with real-time tactical combat visualization.
+**DevOrDie** is a sophisticated AI programming software where players design battle strategies through code. Write JavaScript AI logic to control units like soldiers, archers, tanks, drones, and snipers on customizable terrains with real-time tactical combat visualization.
+
+## Problem Statement-Create a battle simulator where each player programs their units’ logic and the system runs an autonomous battle simulation between the two armies.(PS-7)
 
 ### 🎯 What Makes It Special
 
