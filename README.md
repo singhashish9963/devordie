@@ -632,7 +632,6 @@ git push origin feature/amazing-feature
 
 # Open Pull Request
 ```
-
 ---
 
 ## Error Handling, Reliability & Security Implementations
@@ -746,6 +745,60 @@ Ashish Singh: C++ Backend;
 Arushi Nayak: Frontend;
 Sahil Dora: Machine Learning;
 Yodaksha Apratim Singh: Auth, Optimization and AI Analysis;
+
+## 💻 AI/ML Integration in the Project 
+DevOrDie includes two powerful intelligence layers that enhance gameplay experience and help players evolve their strategic thinking:
+  (1) Machine Learning Playstyle Profiling and
+  (2) AI-Generated Strategy Assistance powered by Google Gemini Flash ⚡.
+
+### 🧠 1. Machine Learning — Playstyle Profiling (K-Means Clustering)
+To understand and categorize player strategies, DevOrDie extracts a **20-dimensional feature vector** from each army configuration, including:
+  ✔️ Unit composition (soldiers, archers, tanks, drones, snipers, medics)  
+  ✔️ Total & average attack values  
+  ✔️ Total & average health  
+  ✔️ Formation width & height  
+  ✔️ Position variance (avg X/Y, std X/Y)  
+  ✔️ Speed, range, density  
+  ✔️ Ranged-unit fraction  
+  ✔️ Spatial distribution patterns 
+
+We run **K-Means clustering** independently for **teamA** and **teamB**, allowing both sides to develop unique strategy archetypes.
+
+#### 🔍 What ML Produces
+For every saved strategy, ML assigns:
+
+- A **cluster ID** (0–3)
+- A **descriptive playstyle name**, e.g.:
+   ✔️ *Aggressive Rush*
+   ✔️ *Defensive Fortress*
+   ✔️ *Ranged Overwatch*
+   ✔️ *Balanced Skirmisher*
+
+These clusters are saved inside:
+ml/playstyle_clusters_teamA.csv
+ml/playstyle_clusters_teamB.csv
+
+### 🤖 2. AI Strategy Generator — Powered by Google Gemini Flash ⚡
+
+DevOrDie includes a built-in AI assistant that generates **full JavaScript battle strategies** based on user input.
+
+#### 🎯 How It Works
+
+Players can:
+Choose a predefined strategy archetype  **Or describe their own strategy using custom prompt**
+The AI uses **Google Gemini Flash** to generate:
+- Valid JavaScript decision logic  
+- Unit behavior patterns (movement, targeting, spacing)  
+- Terrain-aware tactical recommendations  
+- Optimized compositions for specific playstyles  
+
+#### ⚡ Why Gemini Flash?
+- Extremely fast (millisecond responses)  
+- Great at code generation  
+- Understands tactical reasoning  
+- Works well with the game’s API structure  
+
+This enables players to create advanced strategies without writing all code manually—perfect for beginners and pros.
 
 ## Future Improvements:
 
