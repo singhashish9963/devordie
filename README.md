@@ -12,19 +12,20 @@ A cutting-edge, full-stack battle simulation platform where players write JavaSc
 
 ---
 
-## 🌟 Overview
+## 🌟 Project Overview
 
-**DevOrDie** is a sophisticated AI programming software where players design battle strategies through code. Write JavaScript AI logic to control units like soldiers, archers, tanks, drones, and snipers on customizable terrains with real-time tactical combat visualization.
+This is a sophisticated AI programming software where players design battle strategies through code. Write JavaScript AI logic to control units like soldiers, archers, tanks, drones, and snipers on customizable terrains with real-time tactical combat visualization.
 
 ## Problem Statement-Create a battle simulator where each player programs their units’ logic and the system runs an autonomous battle simulation between the two armies.(PS-7)
 
 ### 🎯 What Makes It Special
 
-- ⚡ **High-Performance C++ WASM Engine** - 10-100x faster than pure JavaScript
-- 🎨 **Visual Terrain Editor** - 8 terrain types with unique combat effects  
-- 💻 **Code-Driven AI** - Write JavaScript strategies with full battle awareness
-- 🔄 **Real-Time Visualization** - Smooth Canvas animations with live stats
-- 🏆 **Multiplayer Infrastructure** - Ready for ranked competitive battles
+- **High-Performance C++ WASM Engine** - 10-100x faster than pure JavaScript
+- **Visual Terrain Editor** - 8 terrain types with unique combat effects  
+- **Code-Driven AI** - Write JavaScript strategies with full battle awareness
+- **Real-Time Visualization** - Smooth Canvas animations with live stats
+- **Multiplayer Infrastructure** - Ready for ranked competitive battles
+- **AI Strategy Guide** - Choose a battle strategy or describe your own custom strategy. 
 
 ---
 
@@ -64,6 +65,11 @@ A cutting-edge, full-stack battle simulation platform where players write JavaSc
 ---
 
 ## 🏗️ Architecture
+
+The system follows a three-layer architecture:
+Frontend (React): UI rendering, terrain editing, AI code editing, battle visualization.
+Backend (Node.js): API gateway, battle orchestration, authentication, WASM bridge.
+Engine Layer (C++ → WASM): High-performance simulation core executing all combat logic.
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -630,98 +636,116 @@ git push origin feature/amazing-feature
 ---
 
 ## Error Handling, Reliability & Security Implementations
-1. Error Handling
-Backend API Error Handling
-✅ Try-Catch Blocks - All routes wrapped in error handlers
-✅ Centralized Error Middleware - Consistent error responses across all endpoints
-✅ HTTP Status Codes - Proper 400, 401, 403, 404, 500 responses
-✅ Detailed Error Messages - Clear feedback for debugging (development mode)
-✅ Safe Error Messages - Generic messages in production (hides internal details)
-Frontend Error Handling
-✅ API Call Wrappers - All fetch requests in try-catch blocks
-✅ Toast Notifications - User-friendly error messages (not technical)
-✅ Fallback UI - Graceful degradation when features fail
-✅ Loading States - Prevent duplicate requests, show progress
-✅ Network Error Detection - Specific handling for connection issues
-AI Code Generation Error Handling
-✅ Rate Limit Detection - Catches 429 errors from Gemini API
-✅ Quota Exceeded Handling - Automatic fallback to preset strategies
-✅ Request Queue - Prevents API spam with throttling (5 sec delays)
-✅ Cache System - 30-min cache reduces API calls by 80%
-✅ Token Limit Management - Reduced to 1500 tokens per request
-Battle Simulation Error Handling
-✅ Boundary Validation - Units can't move outside 0-19 grid
-✅ Position Clamping - Invalid positions rounded to valid coordinates
-✅ AI Code Timeout - Prevents infinite loops (5 sec max per tick)
-✅ Safe Code Execution - Isolated JavaScript VM for user code
-✅ Unit Validation - Budget limits (1000 pts), max 10 units enforced
-2. Reliability Considerations
-Database Reliability
-✅ MongoDB Connection Pooling - Reuses connections efficiently
-✅ Retry Logic - Auto-reconnect on connection drops
-✅ Data Validation - Mongoose schemas enforce data integrity
-✅ Indexes - Faster queries on battleCode, userId, status
-✅ TTL Indexes - Auto-delete expired battles after 30 minutes
-Battle State Management
-✅ Status Tracking - Clear states: waiting, ready, in_progress, completed
-✅ Atomic Updates - MongoDB operations prevent race conditions
-✅ Player Role Validation - Ensures only host/challenger can submit
-✅ Double-Submit Prevention - Can't submit units twice
-WebSocket Reliability
-✅ Auto-Reconnect - Socket.io handles reconnections automatically
-✅ Room Management - Players isolated in battle-specific rooms
-✅ Heartbeat Checks - Detects disconnected clients
-✅ Event Acknowledgments - Ensures messages delivered
-Caching & Performance
-✅ Strategy Cache - 30-min TTL reduces database load
-✅ Rate Limiting Cache - Tracks last 15 API requests per minute
-✅ Battle Replay Storage - Complete tick history for debugging
-✅ Frontend State Management - React Context prevents prop drilling
-Code Execution Safety
-✅ WASM Fallback - If C++ engine fails, uses JavaScript engine
-✅ Sandboxed Evaluation - User AI code runs in isolated context
-✅ Memory Limits - Prevents stack overflow from recursive code
-✅ Execution Timeout - Kills long-running AI code
-3. Security Implementations
-Authentication & Authorization
-✅ JWT Tokens - Secure, stateless authentication
-✅ 7-Day Expiry - Tokens auto-expire for security
-✅ Password Hashing - bcrypt with salt (never stores plain passwords)
-✅ Auth Middleware - Protects all private routes
-✅ Role-Based Access - Only battle participants can access their battles
-API Security
-✅ CORS Configuration - Only allows requests from http://localhost:5173
-✅ Environment Variables - Secrets in .env (not in code)
-✅ Input Validation - Sanitizes user inputs (battleCode, email, etc.)
-✅ SQL/NoSQL Injection Prevention - Mongoose escapes queries
-✅ Rate Limiting - Prevents API abuse (12 requests/min for Gemini)
-Data Protection
-✅ Encrypted Connections - MongoDB uses SSL/TLS
-✅ Secret Management - JWT_SECRET, API keys in environment variables
-✅ No Sensitive Data in Logs - Passwords/tokens never logged
-✅ User Data Isolation - Players can only access their own data
-Code Injection Prevention
-✅ AI Code Sandboxing - User code can't access server filesystem
-✅ Function Whitelisting - Only safe functions allowed in AI code
-✅ No eval() on Server - User code evaluated in controlled VM
-✅ XSS Protection - React auto-escapes HTML
-Battle Security
-✅ Battle Code Validation - Only alphanumeric codes accepted
-✅ Unique Battle Codes - Collision detection prevents duplicates
-✅ Ownership Checks - Can't modify other players' battles
-✅ AI Code Privacy - Opponent's code hidden until battle ends
-Network Security
-✅ HTTPS Ready - Frontend configured for secure connections
-✅ Cookie Security - HttpOnly, Secure, SameSite flags (if using cookies)
-✅ Content Security Policy - Prevents inline script injection
+
+**1. Error Handling**
+
+  **Backend API Error Handling**
+    ✅ Try-Catch Blocks – All routes wrapped in error handlers
+    ✅ Centralized Error Middleware – Consistent error responses across all endpoints
+    ✅ HTTP Status Codes – Proper 400, 401, 403, 404, 500 responses
+    ✅ Detailed Error Messages – Clear feedback for debugging (development mode)
+    ✅ Safe Error Messages – Generic messages in production (hides internal details)
+
+  **Frontend Error Handling**
+  ✅ API Call Wrappers – All fetch requests in try-catch blocks
+  ✅ Toast Notifications – User-friendly error messages (not technical)
+  ✅ Fallback UI – Graceful degradation when features fail
+  ✅ Loading States – Prevent duplicate requests, show progress
+  ✅ Network Error Detection – Specific handling for connection issues
+
+  **AI Code Generation Error Handling**
+  ✅ Rate Limit Detection – Catches 429 errors from Gemini API
+  ✅ Quota Exceeded Handling – Automatic fallback to preset strategies
+  ✅ Request Queue – Prevents API spam with throttling (5 sec delays)
+  ✅ Cache System – 30-min cache reduces API calls by 80%
+  ✅ Token Limit Management – Reduced to 1500 tokens per request
+
+  **Battle Simulation Error Handling**
+  ✅ Boundary Validation – Units can't move outside 0-19 grid
+  ✅ Position Clamping – Invalid positions rounded to valid coordinates
+  ✅ AI Code Timeout – Prevents infinite loops (5 sec max per tick)
+  ✅ Safe Code Execution – Isolated JavaScript VM for user code
+  ✅ Unit Validation – Budget limits (1000 pts), max 10 units enforced
+
+**2. Reliability Considerations**
+
+  **Database Reliability**
+  ✅ MongoDB Connection Pooling – Reuses connections efficiently
+  ✅ Retry Logic – Auto-reconnect on connection drops
+  ✅ Data Validation – Mongoose schemas enforce data integrity
+  ✅ Indexes – Faster queries on battleCode, userId, status
+  ✅ TTL Indexes – Auto-delete expired battles after 30 minutes
+
+  **Battle State Management**
+  ✅ Status Tracking – Clear states: waiting, ready, in_progress, completed 
+  ✅ Atomic Updates – Prevent race conditions
+  ✅ Player Role Validation – Only host/challenger can submit
+  ✅ Double-Submit Prevention – Can't submit units twice
+
+  **WebSocket Reliability**
+  ✅ Auto-Reconnect – Socket.io handles reconnections automatically
+  ✅ Room Management – Players isolated in battle-specific rooms
+  ✅ Heartbeat Checks – Detects disconnected clients
+  ✅ Event Acknowledgments – Ensures messages delivered
+
+  **Caching & Performance**
+  ✅ Strategy Cache – 30-min TTL reduces database load
+  ✅ Rate Limiting Cache – Tracks last 15 API requests per minute
+  ✅ Battle Replay Storage – Complete tick history for debugging
+  ✅ Frontend State Management – React Context prevents prop drilling
+
+  **Code Execution Safety**
+  ✅ WASM Fallback – If C++ engine fails, uses JavaScript engine
+  ✅ Sandboxed Evaluation – User AI code runs in isolated context
+  ✅ Memory Limits – Prevents stack overflow
+  ✅ Execution Timeout – Stops long-running AI code
+
+**3. Security Implementations**
+
+  **Authentication & Authorization**
+  ✅ JWT Tokens – Secure, stateless authentication
+  ✅ 7-Day Expiry – Tokens auto-expire for security
+  ✅ Password Hashing – bcrypt with salt (never stores plain passwords)
+  ✅ Auth Middleware – Protects all private routes
+  ✅ Role-Based Access – Only battle participants can access their battles
+
+  **API Security**
+  ✅ CORS Configuration – Only allows requests from http://localhost:5173
+  ✅ Environment Variables – Secrets stored in .env
+  ✅ Input Validation – Sanitizes inputs (battleCode, email, etc.)
+  ✅ SQL/NoSQL Injection Prevention – Mongoose escapes queries
+  ✅ Rate Limiting – Prevents API abuse (12 requests/min for Gemini)
+
+  **Data Protection**
+  ✅ Encrypted Connections – MongoDB uses SSL/TLS
+  ✅ Secret Management – JWT_SECRET, API keys in environment variables
+  ✅ No Sensitive Data in Logs – Passwords/tokens never logged
+  ✅ User Data Isolation – Players can only access their data
+
+  **Code Injection Prevention**
+  ✅ AI Code Sandboxing – User code can't access server filesystem
+  ✅ Function Whitelisting – Only safe functions allowed in AI code
+  ✅ No eval() on Server – Secure VM execution
+  ✅ XSS Protection – React auto-escapes HTML
+
+  **Battle Security**
+  ✅ Battle Code Validation – Only alphanumeric codes
+  ✅ Unique Battle Codes – Collision detection prevents duplicates
+  ✅ Ownership Checks – Users cannot modify others' battles
+  ✅ AI Code Privacy – Opponent code hidden until battle ends
+
+  **Network Security**
+  ✅ HTTPS Ready – Frontend configured for secure deployment
+  ✅ Cookie Security – HttpOnly, Secure, SameSite flags
+  ✅ Content Security Policy – Prevents inline script injection
 
 ## 📄Deployed Link-https://devordie-iota.vercel.app/
 
 ## Team Members and Responsibilities:
-Ashish Singh: c++ backend;
-Arushi Nayak: Frontend
-Sahil Dora: Machine Learning part
-Yodaksha Apratim Singh:Auth,Optimization of codes,AI analysis
+Ashish Singh: C++ Backend;
+Arushi Nayak: Frontend;
+Sahil Dora: Machine Learning;
+Yodaksha Apratim Singh: Auth, Optimization and AI Analysis;
 
 ## Future Improvements:
 
@@ -731,7 +755,8 @@ What: Analyze player's battle history and suggest optimal strategies
 How: ML model trained on winning battles learns patterns (aggressive vs defensive, terrain preferences, unit compositions)
 Output: "Based on your 70% win rate with tank-heavy armies, try adding drones for scouting" or "Your code performs 30% better on mountain terrain - focus there"
 Benefit: Personalized improvement suggestions, faster skill progression
-2. Code Quality Analysis with ML
+
+3. Code Quality Analysis with ML
 What: Evaluate AI code efficiency and suggest optimizations
 How: Train model on thousands of battle replays to identify efficient vs inefficient code patterns
 Output: Score code 1-10, highlight bottlenecks ("Your nested loops slow down decisions by 40ms"), suggest alternatives ("Replace linear search with spatial hash grid")
@@ -743,11 +768,20 @@ What: Control 10-100 drones as a coordinated swarm with distributed decision-mak
 How: Leader-follower hierarchy where drones communicate, share targets, maintain formation, avoid collisions autonomously
 Output: Real-time swarm behaviors - surround enemy, flanking maneuvers, cover fire, tactical retreat as unit
 Benefit: Realistic military simulation, impressive for defense demos, research value for autonomous systems
-4. Realistic Sensor & Electronic Warfare Systems
+
+5. Realistic Sensor & Electronic Warfare Systems
 What: Units have limited vision/radar range, can jam enemy communications, hide from sensors
 How: Fog of war (only see within sensor radius), radio range limits, stealth mechanics, signal jamming disables enemy coordination
 Output: Strategic gameplay - scout with drones to reveal map, jam enemies before attack, use terrain to hide from radar
 Benefit: Authentic military simulation, teaches reconnaissance/counter-reconnaissance tactics, defense sector appeal
+
+
+** 📸 ScreenShots of Working Features**
+<img width="1418" height="774" alt="Screenshot 2025-12-09 at 10 14 03 AM" src="https://github.com/user-attachments/assets/f878e9d0-6bab-46e5-9dfe-f29c24c87a9b" />
+<img width="465" height="457" alt="Screenshot 2025-12-09 at 10 16 09 AM" src="https://github.com/user-attachments/assets/77682edb-9099-48fa-b6a8-82c73d3ee9c5" />
+<img width="466" height="437" alt="Screenshot 2025-12-09 at 10 16 22 AM" src="https://github.com/user-attachments/assets/f60bdabd-d07a-4530-8389-b995d81e9b9e" />
+<img width="600" height="305" alt="Screenshot 2025-12-09 at 10 16 36 AM" src="https://github.com/user-attachments/assets/2d30987f-8eab-4cbd-8215-b6e18842f276" />
+
 
 MIT License - see [LICENSE](LICENSE) for details.
 
